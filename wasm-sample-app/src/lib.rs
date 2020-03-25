@@ -54,6 +54,8 @@ pub extern "C" fn fails() {
 }
 
 fn hook(info: &std::panic::PanicInfo<'_>) {
+    unsafe { print_str("HOOK!".as_ptr(), 5) };
+
     let error_msg = info
         .payload()
         .downcast_ref::<String>()
